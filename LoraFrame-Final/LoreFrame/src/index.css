@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+.formScroll::-webkit-scrollbar {
+    display: none;
+}

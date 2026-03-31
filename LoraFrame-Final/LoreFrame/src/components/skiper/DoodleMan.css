@@ -1,0 +1,87 @@
+/* DoodleStyles.css */
+
+/* The specific "hand-drawn" look for the SVG lines */
+.doodle-stroke {
+    fill: none;
+    stroke: currentColor; /* Uses Tailwind text color */
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    /* A slight filter adds to the wobbly doodle effect */
+    filter: url(#wiggle-filter);
+  }
+  
+  /* The main timeline container */
+  .anim-container {
+      /* Total animation loop duration */
+      animation: moveAcrossScreen 8s ease-in-out infinite;
+  }
+  
+  /* --- Timed Pose Toggling --- */
+  
+  /* Phase 1: Looking (0s - 2.5s) */
+  .pose-look {
+      animation: toggleVisibility 8s steps(1) infinite;
+      /* Start visible, hide after phase 1 */
+  }
+  
+  /* Phase 2: Running (2.5s - 5.5s) */
+  .pose-run {
+      opacity: 0; /* Start hidden */
+      animation: 
+          toggleVisibility 8s steps(1) infinite reverse, /* Reverse logic to show in middle */
+          runCycle 0.4s steps(2) infinite; /* The leg kicking loop */
+      animation-delay: 2.5s; /* Wait for look phase to end */
+  }
+  
+  /* Phase 3: Pointing (5.5s - 8s) */
+  .pose-point {
+      opacity: 0; /* Start hidden */
+      animation: toggleSimpleFade 8s steps(1) infinite;
+      animation-delay: 5.5s; /* Wait for run phase to end */
+  }
+  
+  
+  /* --- Keyframes --- */
+  
+  /* 1. Move the character container across the screen */
+  @keyframes moveAcrossScreen {
+      0%, 30% {
+          transform: translateX(0); /* Standing still looking */
+      }
+      70%, 100% {
+          transform: translateX(200px); /* Run to new spot and stop */
+      }
+  }
+  
+  /* 2. A generic toggle used to switch poses on/off based on delays */
+  @keyframes toggleVisibility {
+      0% { opacity: 1; }
+      30% { opacity: 0; } /* Corresponds to the 2.5s mark roughly in an 8s cycle */
+      100% { opacity: 0; }
+  }
+  
+  @keyframes toggleSimpleFade {
+      0% { opacity: 1; }
+      100% { opacity: 1; }
+  }
+  
+  /* 3. The looping legs for the running pose */
+  @keyframes runCycle {
+     0% { transform: translateY(0px) rotate(0deg); }
+     50% { transform: translateY(-5px) rotate(5deg); } /* A slight hop */
+     100% { transform: translateY(0px) rotate(0deg); }
+  }
+
+  /* Optional: A subtle vibration applied to the whole SVG to make it look like a restless drawing */
+  .doodle-vibrate {
+      animation: vibrate 0.2s linear infinite;
+  }
+  
+  @keyframes vibrate {
+    0% { transform: translate(0.5px, 0.5px); }
+    25% { transform: translate(-0.5px, 0.5px); }
+    50% { transform: translate(-0.5px, -0.5px); }
+    75% { transform: translate(0.5px, -0.5px); }
+    100% { transform: translate(0.5px, 0.5px); }
+  }

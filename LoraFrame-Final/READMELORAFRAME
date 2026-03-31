@@ -1,0 +1,144 @@
+🚀 LORAFRAME (IDLock Engine)
+Persistent Character Memory & AI Video Generation System
+
+LORAFRAME is an advanced AI pipeline designed to generate consistent, evolving digital characters. It combines episodic memory, LLM reasoning, and identity-preservation techniques to create permanent digital actors that maintain visual consistency across thousands of images and videos.
+
+✨ Key Features
+🔒 Identity Retention (IDLock)
+Uses InsightFace and embedding matching
+Ensures face consistency across generations
+🧠 Episodic Memory System
+Characters remember past scenes, clothing changes, and injuries
+Powered by RAG and vector databases
+⚡ Smart Prompt Engine
+Converts simple prompts into rich cinematic descriptions
+Uses Groq (Llama 3) for context-aware generation
+🎬 Multi-Modal Output
+Generates high-quality images and videos
+Uses Google Gemini, Imagen, and Veo
+🔁 Self-Healing Loop
+Detects identity drift
+Automatically refines outputs to maintain consistency
+🖼️ Sample Generations
+
+Eye Level:
+https://github.com/user-attachments/assets/5bc45e90-8ff3-41f1-8702-8f2d552efc80
+
+High Angle:
+https://github.com/user-attachments/assets/db6908d2-9eee-4825-9d2e-65e3fa9d4ca4
+
+Low Angle:
+https://github.com/user-attachments/assets/728c0182-c073-4f5a-b677-ad4aaec03412
+
+Close-up:
+https://github.com/user-attachments/assets/c094914a-3dcf-402c-89a0-927c304401de
+
+Dutch Angle:
+https://github.com/user-attachments/assets/31cd3a9d-c1db-40c3-9028-b2bccb31159d
+
+Worm’s Eye View:
+https://github.com/user-attachments/assets/f127d692-0b50-4b8a-b3d0-100ccdbdc144
+
+🎥 Video Results
+
+https://github.com/user-attachments/assets/80b433de-0f4c-47c4-8d18-30b47c584c47
+
+https://github.com/user-attachments/assets/29c6a056-8ba0-4043-847d-80383e128298
+
+🏗️ Architecture Overview
+User interacts with FastAPI Gateway
+Requests are queued using Redis
+Workers handle generation, refinement, memory tracking, and LoRA training
+Data stored in PostgreSQL, Vector DB, and Object Storage
+AI models generate images/videos and validator ensures identity consistency
+🧰 Tech Stack
+
+Frontend:
+
+React.js
+JavaScript
+
+Backend:
+
+Python 3.10+
+FastAPI
+PostgreSQL + SQLAlchemy
+Redis
+
+AI / ML:
+
+Groq (Llama 3)
+Google Gemini / Imagen / Veo
+InsightFace
+
+Data & Storage:
+
+Pinecone / FAISS / Milvus
+AWS S3 / Google Cloud Storage
+⚙️ Getting Started
+Prerequisites
+Python 3.10+
+PostgreSQL
+Redis
+API Keys:
+GOOGLE_API_KEY
+GROQ_API_KEY
+PINECONE_API_KEY (optional)
+Installation
+
+git clone https://github.com/your-username/lora-frame.git
+
+cd lora-frame
+pip install -r requirements.txt
+
+Run the Server
+
+uvicorn app.main:app --reload
+
+🌐 Deployment
+
+Frontend:
+https://lore-frame-in.vercel.app
+
+Backend API Docs:
+https://cineai-api-4sjsy6xola-uc.a.run.app/docs
+
+📡 API Endpoints
+POST /api/v1/characters → Create new character
+POST /api/v1/generate → Generate image
+POST /api/v1/video/generate → Generate video
+GET /api/v1/jobs/{job_id} → Check job status
+📁 Project Structure
+
+cineAI/
+├── app/
+│ ├── api/
+│ ├── core/
+│ ├── models/
+│ ├── schemas/
+│ ├── services/
+│ └── workers/
+├── scripts/
+├── tests/
+├── uploads/
+├── .env.example
+├── requirements.txt
+└── README.md
+
+🚧 Future Improvements
+Real-time character streaming
+Multi-character interaction
+Voice and lip-sync integration
+Custom LoRA training UI
+🤝 Contributing
+
+Fork → Clone → Create Branch → Commit → Pull Request 🚀
+
+📄 License
+
+MIT License
+
+💡 Author
+
+Arpit Singh
+AI Developer | Full Stack Developer
